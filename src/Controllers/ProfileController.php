@@ -4,6 +4,9 @@ namespace Laralum\Profile\Controllers;
 use App\Http\Controllers\Controller;
 use Laralum\Users\Models\User;
 use Illuminate\Http\Request;
+use Auth;
+use Hash;
+use File;
 
 class ProfileController extends Controller
 {
@@ -75,13 +78,11 @@ class ProfileController extends Controller
         return redirect()->route('laralum::profile');
     }
 
-    private function mainUpdateProfile ($request, $goTo = 'laralum::profile.edit')
+    private function mainUpdateProfile($request, $goTo = 'laralum::profile.edit')
     {
 
         $this->validate($request, [
             'name'              => 'max:255',
-            'photo'             => 'image|max:5120',
-            'password'          => 'min:6|confirmed',
             'current_password'  => 'required',
         ]);
 
@@ -93,6 +94,9 @@ class ProfileController extends Controller
             return redirect()->route($goTo)->with('error', 'Incorrect password');
         }
         if ($request->hasFile('photo')) {
+            $this->validate($request, [
+                'photo' => 'image|max:5120',
+            ]);
             if ($request->file('photo')->isValid()) {
                 $request->file('photo')->move(public_path('/avatars'), md5($user->email));
             } else {
@@ -106,10 +110,15 @@ class ProfileController extends Controller
             }
         }
         if($request->password){
+            $this->validate($request, [
+                'password'          => 'min:6|confirmed',
+            ]);
             $user->update(['password' => bcrypt($request->password)]);
-        }
 
-        $user->update(['name' => $request->name]);
+        }
+        if ($request->name) {
+            $user->update(['name' => $request->name]);
+        }
     }
 
 }
