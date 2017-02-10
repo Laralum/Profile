@@ -1,0 +1,24 @@
+{
+    "name": "laralum/profile",
+    "description": "Profile module for laralum",
+    "require": {
+		"laralum/laralum": "dev-master"
+	},
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Erik Campobadal",
+            "email": "soc@erik.cat"
+        },
+        {
+            "name": "Aitor Riba",
+            "email": "contact@aitorriba.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Laralum\\Profile\\": "./src"
+        }
+    },
+    "minimum-stability": "dev"
+}
