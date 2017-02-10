@@ -28,7 +28,7 @@
                                 <strong class="text-danger">{{ $errors->first($field) }}</strong>
                             </div>
                         @endforeach
-                        <a href="{{$cancel}}" class="btn btn-warning float-left">Cancel</a>
+                        <a href="#" class="btn btn-warning float-left">Cancel</a>
                         <button type="submit" class="btn btn-success float-right clickable">Update</button>
                     </form>
                 </div>

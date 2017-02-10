@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use Laralum\Users\Models\User;
 use Illuminate\Http\Request;
 
-class PermissionController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display the logged in user's profile.

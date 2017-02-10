@@ -22,8 +22,8 @@ class ProfileServiceProvider extends ServiceProvider
             __DIR__.'/Views/Public' => resource_path('views/vendor/Laralum/Profile'),
         ], 'laralum');
 
-        $this->loadViewsFrom(resource_path('views/vendor/Laralum/Profile'), 'laralum_profile_public'); //Loading public views
         $this->loadViewsFrom(__DIR__.'/Views/Laralum', 'laralum_profile'); //Loading private views
+        $this->loadViewsFrom(resource_path('views/vendor/Laralum/Profile'), 'laralum_profile_public'); //Loading public views
 
     }
 
