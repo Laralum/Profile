@@ -6,16 +6,13 @@
             <div class="card shadow">
                 <div class="card-block">
                         {!! csrf_field() !!}
-                        @php
-                            $user = Laralum\Users\Models\User::findOrFail(Auth::id());
-                        @endphp
                         <center>
-                            <img src="{{$user->avatar()}}" class="rounded-circle" alt="@lang('laralum_profile::profile.profile_picture')" style="max-width=100px;max-height:100px">
+                            <img src="{{ $user->avatar() }}" class="rounded-circle" alt="@lang('laralum_profile::profile.profile_picture')" style="max-width=100px;max-height:100px">
                             <br><br>
-                            <p style="font-size:20px;">{{$user->name}}</p>
-                            <p class="text-muted">{{$user->email}}</p>
+                            <p style="font-size:20px;">{{ $user->name }}</p>
+                            <p class="text-muted">{{ $user->email }}</p>
                             <br><br>
-                            <a href="{{route('laralum_public::profile.edit')}}" class="btn btn-info">@lang('laralum::general.edit')</a>
+                            <a href="{{ route('laralum_public::profile.edit') }}" class="btn btn-info">@lang('laralum::general.edit')</a>
                         </center>
                 </div>
             </div>

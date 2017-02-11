@@ -17,7 +17,7 @@ class ProfileController extends Controller
      */
     public function publicProfile()
     {
-        return view('laralum_profile_public::profile');
+        return view('laralum_profile_public::profile', ['user' => User::findOrFail(Auth::id())]);
     }
 
     /**
@@ -27,7 +27,7 @@ class ProfileController extends Controller
      */
     public function publicEditProfile()
     {
-        return view('laralum_profile_public::edit');
+        return view('laralum_profile_public::edit', ['user' => User::findOrFail(Auth::id())]);
     }
 
     /**
@@ -51,7 +51,7 @@ class ProfileController extends Controller
      */
     public function profile()
     {
-        return view('laralum_profile::profile');
+        return view('laralum_profile::profile', ['user' => User::findOrFail(Auth::id())]);
     }
 
 
@@ -62,7 +62,7 @@ class ProfileController extends Controller
      */
     public function editProfile()
     {
-        return view('laralum_profile::edit');
+        return view('laralum_profile::edit', ['user' => User::findOrFail(Auth::id())]);
     }
 
 
@@ -86,11 +86,10 @@ class ProfileController extends Controller
             'current_password'  => 'required',
         ]);
 
-        $user = User::findOrFail(Auth::id()); //for use laralum user model
-
+        $user = User::findOrFail(Auth::id()); // To use Laralum user model
 
         if (!Hash::check($request->current_password, $user->password )){
-            # Password incorrect
+            // Password incorrect
             return redirect()->route($goTo)->with('error', 'Incorrect password');
         }
         if ($request->hasFile('picture')) {
