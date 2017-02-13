@@ -21,7 +21,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Display the logged in user's profile.
+     * Display a public form to edit the logged in user's profile.
      *
      * @return \Illuminate\Http\Response
      */
@@ -31,7 +31,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Display the logged in user's profile.
+     * Update profile from public form and return the public profile view.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -56,7 +56,7 @@ class ProfileController extends Controller
 
 
     /**
-     * Display the logged in user's profile.
+     * Display a form to edit the logged in user's profile in laralum administrations.
      *
      * @return \Illuminate\Http\Response
      */
@@ -67,7 +67,7 @@ class ProfileController extends Controller
 
 
     /**
-     * Display the logged in user's profile.
+     *  Update profile from laralum administration form and return the profile view of laralum administration.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -78,6 +78,12 @@ class ProfileController extends Controller
         return redirect()->route('laralum::profile')->with('success', trans('laralum_profile::profile.profile_updated'));
     }
 
+    /**
+     * Validate public and private forms indifferently, and update info if validations is OK
+     *
+     * @param  $request
+     * @param  $goTo
+     */
     private function mainUpdateProfile($request, $goTo = 'laralum::profile.edit')
     {
         $this->validate($request, [
