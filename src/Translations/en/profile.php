@@ -9,6 +9,7 @@ return [
     */
 
     'profile'               => 'Profile',
+    'edit_profile'          => 'Edit Profile',
     'profile_desc'          => 'View and manage your profile',
     'profile_picture'       => 'Profile Picture',
     'profile_updated'       => 'Profile Updated',

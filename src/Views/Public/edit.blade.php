@@ -5,7 +5,7 @@
         <div class="col-md-12 col-lg-6 offset-lg-3">
             <div class="card shadow">
                 <div class="card-header">
-                    Edit Profile ({{ $user->email }})
+                    @lang('laralum_profile::profile.edit_profile') ({{ $user->email }})
                 </div>
                 <div class="card-block">
                     <form method="POST" enctype="multipart/form-data">
