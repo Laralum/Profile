@@ -22,10 +22,10 @@ class ProfileServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/Views/Public' => resource_path('views/vendor/Laralum/Profile'),
-        ], 'laralum');
+        ], 'laralum_profile');
 
-        $this->loadViewsFrom(__DIR__.'/Views/Laralum', 'laralum_profile'); //Loading private views
-        $this->loadViewsFrom(resource_path('views/vendor/Laralum/Profile'), 'laralum_profile_public'); //Loading public views
+        $this->loadViewsFrom(__DIR__.'/Views', 'laralum_profile');
+        //$this->loadViewsFrom(resource_path('views/vendor/Laralum/Profile'), 'laralum_profile_public');
 
     }
 
@@ -36,5 +36,6 @@ class ProfileServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        //
     }
 }

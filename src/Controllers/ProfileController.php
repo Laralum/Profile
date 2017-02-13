@@ -17,7 +17,7 @@ class ProfileController extends Controller
      */
     public function publicProfile()
     {
-        return view('laralum_profile_public::profile', ['user' => User::findOrFail(Auth::id())]);
+        return view('laralum_profile::public.profile', ['user' => User::findOrFail(Auth::id())]);
     }
 
     /**
@@ -27,7 +27,7 @@ class ProfileController extends Controller
      */
     public function publicEditProfile()
     {
-        return view('laralum_profile_public::edit', ['user' => User::findOrFail(Auth::id())]);
+        return view('laralum_profile::public.edit', ['user' => User::findOrFail(Auth::id())]);
     }
 
     /**
@@ -51,7 +51,7 @@ class ProfileController extends Controller
      */
     public function profile()
     {
-        return view('laralum_profile::profile', ['user' => User::findOrFail(Auth::id())]);
+        return view('laralum_profile::laralum.profile', ['user' => User::findOrFail(Auth::id())]);
     }
 
 
@@ -62,7 +62,7 @@ class ProfileController extends Controller
      */
     public function editProfile()
     {
-        return view('laralum_profile::edit', ['user' => User::findOrFail(Auth::id())]);
+        return view('laralum_profile::laralum.edit', ['user' => User::findOrFail(Auth::id())]);
     }
 
 
@@ -80,7 +80,6 @@ class ProfileController extends Controller
 
     private function mainUpdateProfile($request, $goTo = 'laralum::profile.edit')
     {
-
         $this->validate($request, [
             'name'              => 'max:255',
             'current_password'  => 'required',
@@ -88,34 +87,36 @@ class ProfileController extends Controller
 
         $user = User::findOrFail(Auth::id()); // To use Laralum user model
 
-        if (!Hash::check($request->current_password, $user->password )){
+        if ( !Hash::check($request->current_password, $user->password )){
             // Password incorrect
             return redirect()->route($goTo)->with('error', 'Incorrect password');
         }
-        if ($request->hasFile('picture')) {
+        if ( $request->hasFile('picture') ) {
             $this->validate($request, [
                 'picture' => 'image|max:5120',
             ]);
-            if ($request->file('picture')->isValid()) {
+
+            if ( $request->file('picture')->isValid() ) {
                 $request->file('picture')->move(public_path('/avatars'), md5($user->email));
             } else {
                 return redirect()->route($goTo)->with('error', 'picture is not valid. Try with another picture');
             }
         } else {
-            if ($user->hasAvatar()) {
-                if (!$request->save_picture) {
+            if ( $user->hasAvatar() ) {
+                if ( !$request->save_picture ) {
                     File::delete(public_path('/avatars/'.md5($user->email)));
                 }
             }
         }
-        if($request->password){
+        if( $request->password ){
+
             $this->validate($request, [
                 'password'          => 'min:6|confirmed',
             ]);
             $user->update(['password' => bcrypt($request->password)]);
-
         }
-        if ($request->name) {
+
+        if( $request->name ) {
             $user->update(['name' => $request->name]);
         }
     }
