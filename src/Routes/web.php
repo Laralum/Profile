@@ -1,7 +1,7 @@
 <?php
 
 Route::group([
-        'middleware' => ['web', 'laralum.base'],
+        'middleware' => ['web', 'laralum.base', 'auth'],
         'namespace' => 'Laralum\Profile\Controllers',
         'as' => 'laralum_public::'
     ], function () {
