@@ -1,7 +1,8 @@
 {
-    "name": "My Profile",
-    "item": {
-        "text": "My Profile",
-        "route": "laralum::profile"
-    }
+    "items": [
+        {
+            "text": "My Profile",
+            "route": "laralum::profile"
+        }
+    ]
 }
