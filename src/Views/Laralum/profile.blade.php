@@ -15,7 +15,7 @@
                         <center>
                             <div class="uk-text-center">
                                 <div class="uk-inline-clip uk-transition-toggle">
-                                    <img  src="{{ $user->avatar() }}" class="uk-border-circle" style="max-width=150px;max-height:150px" alt="">
+                                    <img  src="{{ $user->avatar() }}" class="uk-border-circle" style="max-width:150px;max-height:150px" alt="">
                                     <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
                                         <a href="{{ route('laralum::profile.edit') }}" class="uk-button uk-button-default">@lang('laralum::general.edit')</a>
                                     </div>

@@ -23,4 +23,6 @@ return [
     'password_confirmation' => 'Password Confirmation',
     'cancel'        => 'Cancel',
     'submit'        => 'Submit',
+    'image_not_valid' => 'Image is not valid. Try again with another one please',
+    'incorrect_password' => 'Incorrect Password',
 ];

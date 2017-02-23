@@ -1,15 +1,15 @@
 @extends('laralum::layouts.public')
-@section('title', trans('laralum_profile::profile.account_settings'))
+@section('title', trans('laralum_profile::general.account_settings'))
 @section('content')
-                    @lang('laralum_profile::profile.edit_profile') ({{ $user->email }})
+                    @lang('laralum_profile::general.edit_profile') ({{ $user->email }})
                     <br><br>
                     <form method="POST" enctype="multipart/form-data">
                         {!! csrf_field() !!}
-                        <label for="picture">@lang('laralum_profile::profile.profile_picture')</label>
+                        <label for="picture">@lang('laralum_profile::general.profile_picture')</label>
                         <input type="file" id="file" name="picture" value="{{old('picture')}}" class="custom-file-input">
                         <br>
                         <input type="checkbox" name="save_picture" id="save_picture" class="custom-control-input" @if(old('save_picture',$user->hasAvatar())) checked @endif>
-                        <span>@lang('laralum_profile::profile.save_picture')</span>
+                        <span>@lang('laralum_profile::general.save_picture')</span>
                         <br>
                         <label for="name">@lang('laralum::general.name')</label>
                         <input id="name" type="text" name="name" value="{{ old('name', isset($user->name) ? $user->name : '' ) }}" class="form-control">

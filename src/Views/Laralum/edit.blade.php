@@ -15,6 +15,7 @@
                         <form method="POST" class="uk-form-stacked" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <fieldset class="uk-fieldset">
+                                {{md5(Auth::user()->mail)}}
 
                                 <div class="uk-margin">
                                     <label class="uk-form-label">@lang('laralum_profile::general.save_picture')</label>
@@ -28,7 +29,7 @@
 
                                         <div uk-form-custom="target: true">
                                             <input class="file" name="picture" type="file">
-                                            <input class="uk-input uk-form-width-large" type="text" placeholder="Browse files.." disabled>
+                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Browse files.." disabled>
                                         </div>
                                 </div>
 
