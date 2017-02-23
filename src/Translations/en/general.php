@@ -17,5 +17,10 @@ return [
     'account'               => 'Account',
     'account_settings'      => 'Account Settings',
     'account_settings_desc' => 'Update your profile information & avatar',
-
+    'password'              => 'Password',
+    'name'                  => 'Name',
+    'current_password'      => 'Current Password',
+    'password_confirmation' => 'Password Confirmation',
+    'cancel'        => 'Cancel',
+    'submit'        => 'Submit',
 ];

@@ -39,7 +39,7 @@ class ProfileController extends Controller
     public function publicUpdateProfile(Request $request)
     {
         $this->mainUpdateProfile($request, 'laralum_public::profile.edit');
-        return redirect()->route('laralum_public::profile')->with('success', trans('laralum_profile::profile.profile_updated'));
+        return redirect()->route('laralum_public::profile.index')->with('success', trans('laralum_profile::profile.profile_updated'));
     }
 
 
@@ -75,7 +75,7 @@ class ProfileController extends Controller
     public function updateProfile(Request $request)
     {
         $this->mainUpdateProfile($request);
-        return redirect()->route('laralum::profile')->with('success', trans('laralum_profile::profile.profile_updated'));
+        return redirect()->route('laralum::profile.index')->with('success', trans('laralum_profile::profile.profile_updated'));
     }
 
     /**

@@ -2,7 +2,11 @@
     "items": [
         {
             "text": "My Profile",
-            "route": "laralum::profile"
+            "route": "laralum::profile.index"
+        },
+        {
+            "text": "Edit Profile",
+            "route": "laralum::profile.edit"
         }
     ]
 }
