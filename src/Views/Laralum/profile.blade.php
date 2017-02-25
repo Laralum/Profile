@@ -1,7 +1,13 @@
 @extends('laralum::layouts.master')
-@section('icon', 'mdi-account')
+@section('icon', 'ion-person')
 @section('title', trans('laralum_profile::general.profile'))
 @section('subtitle', trans('laralum_profile::general.profile_desc'))
+@section('breadcrumb')
+    <ul class="uk-breadcrumb">
+        <li><a href="{{ route('laralum::index') }}">@lang('laralum_profile::general.home')</a></li>
+        <li><span href="">@lang('laralum_profile::general.profile')</span></li>
+    </ul>
+@endsection
 @section('content')
     <div class="uk-container uk-container-large">
         <div uk-grid>
@@ -16,8 +22,8 @@
                             <div class="uk-text-center">
                                 <div class="uk-inline-clip uk-transition-toggle">
                                     <img  src="{{ $user->avatar() }}" class="uk-border-circle" style="max-width:150px;max-height:150px" alt="">
-                                    <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
-                                        <a href="{{ route('laralum::profile.edit') }}" class="uk-button uk-button-default">@lang('laralum::general.edit')</a>
+                                    <div class="uk-transition-fade uk-position-cover uk-border-circle uk-overlay uk-overlay-default uk-flex uk-flex-center uk-flex-middle">
+                                        <a href="https://gravatar.com/" class="uk-button uk-button-default">@lang('laralum::general.edit')</a>
                                     </div>
                                 </div>
                             </div>

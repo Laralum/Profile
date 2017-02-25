@@ -1,7 +1,14 @@
 @extends('laralum::layouts.master')
-@section('icon', 'mdi-account-settings-variant')
-@section('title', trans('laralum_profile::general.account_settings'))
-@section('subtitle', trans('laralum_profile::general.account_settings_desc'))
+@section('icon', 'ion-edit')
+@section('title', trans('laralum_profile::general.edit_profile'))
+@section('subtitle', trans('laralum_profile::general.edit_profile_desc'))
+@section('breadcrumb')
+    <ul class="uk-breadcrumb">
+        <li><a href="{{ route('laralum::index') }}">@lang('laralum_profile::general.home')</a></li>
+        <li><a href="{{ route('laralum::profile.index') }}">@lang('laralum_profile::general.profile')</a></li>
+        <li><span href="">@lang('laralum_profile::general.edit_profile')</span></li>
+    </ul>
+@endsection
 @section('content')
     <div class="uk-container uk-container-large">
         <div uk-grid>
@@ -15,23 +22,28 @@
                         <form method="POST" class="uk-form-stacked" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <fieldset class="uk-fieldset">
-                                {{md5(Auth::user()->mail)}}
 
+                                <!--
                                 <div class="uk-margin">
                                     <label class="uk-form-label">@lang('laralum_profile::general.save_picture')</label>
-                                        <input type="checkbox" name="save_picture" id="save_picture" class="uk-checkbox" @if(old('save_picture',$user->hasAvatar())) checked @endif>
+                                    <div class="uk-form-controls">
+                                        <label>
+                                            <input class="uk-checkbox" name="save_picture" id="save_picture" type="checkbox" @if(old('save_picture', $user->hasAvatar())) checked @endif>
                                             @lang('laralum_profile::general.save_picture')
-
+                                        </label>
+                                    </div>
                                 </div>
 
                                 <div class="uk-margin">
                                     <label class="uk-form-label">@lang('laralum_profile::general.profile_picture')</label>
-
-                                        <div uk-form-custom="target: true">
+                                    <div class="uk-form-controls">
+                                        <div uk-form-custom="target: true" class="uk-width-1-1">
                                             <input class="file" name="picture" type="file">
-                                            <input class="uk-input uk-form-width-medium" type="text" placeholder="Browse files.." disabled>
+                                            <input class="uk-input" type="text" placeholder="@lang('laralum_profile::general.browse_file')" disabled>
                                         </div>
+                                    </div>
                                 </div>
+                                -->
 
                                 <div class="uk-margin">
                                     <label class="uk-form-label">@lang('laralum_profile::general.name')</label>
@@ -47,6 +59,8 @@
                                     <label class="uk-form-label">@lang('laralum_profile::general.password_confirmation')</label>
                                     <input name="password_confirmation" class="uk-input" type="password" placeholder="@lang('laralum_profile::general.password_confirmation')">
                                 </div>
+
+                                <hr class="uk-divider-icon">
 
                                 <div class="uk-margin">
                                     <label class="uk-form-label">@lang('laralum_profile::general.current_password')</label>

@@ -5,12 +5,14 @@
                     <br><br>
                     <form method="POST" enctype="multipart/form-data">
                         {!! csrf_field() !!}
+                        <!--
                         <label for="picture">@lang('laralum_profile::general.profile_picture')</label>
                         <input type="file" id="file" name="picture" value="{{old('picture')}}" class="custom-file-input">
                         <br>
                         <input type="checkbox" name="save_picture" id="save_picture" class="custom-control-input" @if(old('save_picture',$user->hasAvatar())) checked @endif>
                         <span>@lang('laralum_profile::general.save_picture')</span>
                         <br>
+                        -->
                         <label for="name">@lang('laralum::general.name')</label>
                         <input id="name" type="text" name="name" value="{{ old('name', isset($user->name) ? $user->name : '' ) }}" class="form-control">
                         <br>
