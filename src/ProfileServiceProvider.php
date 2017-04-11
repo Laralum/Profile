@@ -21,7 +21,7 @@ class ProfileServiceProvider extends ServiceProvider
         }
 
         $this->publishes([
-            __DIR__.'/Views/public' => resource_path('views/vendor/Laralum/Profile'),
+            __DIR__.'/Views/public' => resource_path('views/vendor/laralum/profile'),
         ], 'laralum_profile');
 
         $this->loadViewsFrom(__DIR__.'/Views', 'laralum_profile');
