@@ -1,12 +1,13 @@
 <?php
 
 namespace Laralum\Profile\Controllers;
+
 use App\Http\Controllers\Controller;
-use Laralum\Users\Models\User;
-use Illuminate\Http\Request;
 use Auth;
-use Hash;
 use File;
+use Hash;
+use Illuminate\Http\Request;
+use Laralum\Users\Models\User;
 
 class ProfileController extends Controller
 {
@@ -33,7 +34,8 @@ class ProfileController extends Controller
     /**
      * Update profile from public form and return the public profile view.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function publicUpdateProfile(Request $request)
@@ -46,10 +48,9 @@ class ProfileController extends Controller
             // Validation or update fails
             return redirect()->route('laralum_public::profile.edit')->with('error', $notValid);
         }
+
         return redirect()->route('laralum_public::profile.index')->with('success', __('laralum_profile::general.profile_updated'));
     }
-
-
 
     /**
      * Display the logged in user's profile in laralum administration.
@@ -61,7 +62,6 @@ class ProfileController extends Controller
         return view('laralum_profile::laralum.profile', ['user' => User::findOrFail(Auth::id())]);
     }
 
-
     /**
      * Display a form to edit the logged in user's profile in laralum administrations.
      *
@@ -72,11 +72,11 @@ class ProfileController extends Controller
         return view('laralum_profile::laralum.edit', ['user' => User::findOrFail(Auth::id())]);
     }
 
-
     /**
      *  Update profile from laralum administration form and return the profile view of laralum administration.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function updateProfile(Request $request)
@@ -94,7 +94,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Validate public and private forms indifferently, and update info if validations are OK
+     * Validate public and private forms indifferently, and update info if validations are OK.
      *
      * @param \Illuminate\Http\Request $request
      */
@@ -107,40 +107,38 @@ class ProfileController extends Controller
 
         $user = User::findOrFail(Auth::id()); // To use Laralum user model
 
-        if ( !Hash::check($request->current_password, $user->password) ) {
+        if (!Hash::check($request->current_password, $user->password)) {
             // Password incorrect
             return __('laralum_profile::general.incorrect_password'); // Update error: incorrect password
         }
-        if ( $request->hasFile('picture') ) {
+        if ($request->hasFile('picture')) {
             $this->validate($request, [
                 'picture' => 'image|max:5120',
             ]);
 
-            if ( $request->file('picture')->isValid() ) {
+            if ($request->file('picture')->isValid()) {
                 $request->file('picture')->move(public_path('/avatars'), md5($user->email));
             } else {
                 return __('laralum_profile::general.image_not_valid'); // Update error: image not valid
             }
         } else {
-            if ( $user->hasAvatar() ) {
-                if ( !$request->save_picture ) {
+            if ($user->hasAvatar()) {
+                if (!$request->save_picture) {
                     File::delete(public_path('/avatars/'.md5($user->email)));
                 }
             }
         }
-        if( $request->password ){
-
+        if ($request->password) {
             $this->validate($request, [
                 'password' => 'min:6|confirmed',
             ]);
             $user->update(['password' => bcrypt($request->password)]);
         }
 
-        if( $request->name ) {
+        if ($request->name) {
             $user->update(['name' => $request->name]);
         }
 
         return 0; // Updated completed okai
     }
-
 }

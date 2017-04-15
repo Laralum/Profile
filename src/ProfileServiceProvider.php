@@ -13,7 +13,6 @@ class ProfileServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         $this->loadTranslationsFrom(__DIR__.'/Translations', 'laralum_profile');
 
         if (!$this->app->routesAreCached()) {
@@ -26,7 +25,6 @@ class ProfileServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__.'/Views', 'laralum_profile');
         //$this->loadViewsFrom(resource_path('views/vendor/Laralum/Profile'), 'laralum_profile_public');
-
     }
 
     /**
