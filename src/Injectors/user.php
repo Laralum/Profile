@@ -8,5 +8,5 @@ return [
     [
         'text'  => __('laralum_profile::general.edit_profile'),
         'url'   => route('laralum::profile.edit'),
-    ]
+    ],
 ];
