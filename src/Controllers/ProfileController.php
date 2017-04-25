@@ -3,9 +3,9 @@
 namespace Laralum\Profile\Controllers;
 
 use App\Http\Controllers\Controller;
-use Auth;
-use File;
-use Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Laralum\Users\Models\User;
 
