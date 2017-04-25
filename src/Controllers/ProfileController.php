@@ -3,10 +3,10 @@
 namespace Laralum\Profile\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
 use Laralum\Users\Models\User;
 
 class ProfileController extends Controller
