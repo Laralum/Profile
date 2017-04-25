@@ -132,7 +132,7 @@ class ProfileController extends Controller
             $this->validate($request, [
                 'password' => 'min:6|confirmed',
             ]);
-            $user->update(['password' => bcrypt($request->password)]);
+            $user->update(['password' => $request->password]);
         }
 
         if ($request->name) {
