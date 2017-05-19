@@ -19,12 +19,10 @@
                         @lang('laralum_profile::general.edit_profile') ({{ $user->email }})
                     </div>
                     <div class="uk-card-body">
-                        <form method="POST" class="uk-form-stacked" enctype="multipart/form-data">
+                        <form method="POST" class="uk-form-stacked" enctype="multipart/form-data" action="{{ route("laralum::profile.update") }}">
                             {{ csrf_field() }}
                             <fieldset class="uk-fieldset">
-
-                                <!--
-                                <div class="uk-margin">
+                                {{-- <div class="uk-margin">
                                     <label class="uk-form-label">@lang('laralum_profile::general.save_picture')</label>
                                     <div class="uk-form-controls">
                                         <label>
@@ -42,9 +40,7 @@
                                             <input class="uk-input" type="text" placeholder="@lang('laralum_profile::general.browse_file')" disabled>
                                         </div>
                                     </div>
-                                </div>
-                                -->
-
+                                </div> --}}
                                 <div class="uk-margin">
                                     <label class="uk-form-label">@lang('laralum_profile::general.name')</label>
                                     <input value="{{ old('name', $user->name) }}" name="name" class="uk-input" type="text" placeholder="@lang('laralum_profile::general.name')">
@@ -73,9 +69,6 @@
                                         <span class="ion-forward"></span>&nbsp; @lang('laralum_profile::general.submit')
                                     </button>
                                 </div>
-
-
-
                             </fieldset>
                         </form>
                     </div>

@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>@lang('laralum_profile::general.edit_profile') - {{ $settings->appname }}</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="{{ \Laralum\Laralum\Packages::css() }}">
 
     </head>
     <body>
@@ -43,9 +44,9 @@
             <hr>
         @endif
 
-        @lang('laralum_profile::general.edit_profile') ({{ $user->email }})
-        <br><br>
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" action="{{ route("laralum_public::profile.update") }}">
+            @lang('laralum_profile::general.edit_profile') ({{ $user->email }})
+            <br><br>
             {!! csrf_field() !!}
 
             {{-- <label for="picture">@lang('laralum_profile::general.profile_picture')</label>

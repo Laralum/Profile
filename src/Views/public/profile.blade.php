@@ -9,6 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>@lang('laralum_profile::general.profile') - {{ $settings->appname }}</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="{{ \Laralum\Laralum\Packages::css() }}">
 
     </head>
     <body>
@@ -43,10 +44,13 @@
             <hr>
 
         @endif
-
-        <img src="{{ $user->avatar() }}" alt="@lang('laralum_profile::general.profile_picture')" style="max-width:100px;max-height:100px;">
-        <p style="font-size:20px;">{{ $user->name }}</p>
-        <p>{{ $user->email }}</p>
-        <a href="{{ route('laralum_public::profile.edit') }}">@lang('laralum::general.edit')</a>
+        <card>
+            <center>
+                <img src="{{ $user->avatar() }}" alt="@lang('laralum_profile::general.profile_picture')" style="max-width:100px;max-height:100px;border-radius:50px">
+                <p style="font-size:20px;">{{ $user->name }}</p>
+                <p>{{ $user->email }}</p>
+                <a href="{{ route('laralum_public::profile.edit') }}">@lang('laralum::general.edit')</a>
+            </center>
+        </card>
     </body>
 </html>
