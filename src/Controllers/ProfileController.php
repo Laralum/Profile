@@ -101,7 +101,7 @@ class ProfileController extends Controller
     private function mainUpdateProfile($request)
     {
         $this->validate($request, [
-            'name'              => 'max:255',
+            'name'              => 'required|min:3|max:191',
             'current_password'  => 'required',
         ]);
 
